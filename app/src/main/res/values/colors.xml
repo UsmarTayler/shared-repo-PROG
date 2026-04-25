@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Basic Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Backgrounds -->
+    <color name="dark_gray">#121212</color>
+    <color name="medium_gray">#1F1F1F</color>
+    <color name="light_gray">#2C2C2C</color>
+
+    <!-- Accent / Highlight -->
+    <color name="yellow_accent">#FFC107</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#E0E0E0</color>
+    <color name="text_secondary">#B0B0B0</color>
+
+    <!-- Income / Expense Indicators -->
+    <color name="income_green">#4CAF50</color>
+    <color name="expense_red">#F44336</color>
+</resources>
