@@ -2,8 +2,11 @@ package com.example.budgie_budgetapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.budgie_budgetapp.utils.PREFS_NAME
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -13,6 +16,7 @@ class ProfileActivity : AppCompatActivity() {
 
         setupNavigation()
         setupSettingsButton()
+        setupLogout()
     }
 
     private fun setupSettingsButton() {
@@ -20,6 +24,21 @@ class ProfileActivity : AppCompatActivity() {
 
         settingsButton?.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
+        }
+    }
+
+    private fun setupLogout() {
+        findViewById<Button>(R.id.btnLogout)?.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Are you sure you want to logout?")
+                .setPositiveButton("Logout") { _, _ ->
+                    getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit().clear().apply()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finishAffinity()
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
         }
     }
 

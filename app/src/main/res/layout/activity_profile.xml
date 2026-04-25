@@ -144,6 +144,18 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="274dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#B00020"
+            android:padding="9dp"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <!-- Rewards Section (Replaces Settings) -->
