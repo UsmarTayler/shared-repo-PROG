@@ -45,8 +45,8 @@ Budgie is a personal finance and budget tracking Android app. Users can register
 | Member | Student Number | Tasks |
 |---|---|---|
 | **Tayler** | ST10445063 | Room DB setup, User auth, Categories CRUD, Login/Dashboard |
-| Person 2 | ST1010445830 | *(add your tasks here)* |
-| Person 3 | ST10442835| *(add your tasks here)* |
+| **[Name]** | ST1010445830 | Expense entry form (date, time, description, category, amount), photo capture (camera + gallery), validation, DB save |
+| **[Name]** | ST10442835 | Transaction history with date filtering, expense totals per category, monthly budget goals, dashboard budget indicators |
 
 ---
 
@@ -87,22 +87,67 @@ Budgie is a personal finance and budget tracking Android app. Users can register
 
 ---
 
-### 🔲 Person 2 — *(Feature name here)*
+### ✅ [Name] — Expense Entry & Photo Capture
 
-> **Instructions for Person 2:** Replace this section with your feature documentation.
-> Follow the same format as Person 1 above:
-> - Short description of what the feature does
-> - Any important implementation details (e.g. how photos are stored, what permissions are needed)
-> - List of relevant files you created or modified
+#### Expense Entry Form
+- Built a full expense/income entry form with **amount, category (spinner), date picker, start/end time pickers, and description**
+- Transaction type (expense or income) is toggled via tab buttons
+- All fields are **validated** before saving — empty amount, invalid number, missing description, and unselected category are all caught
+- Users can **add a new category inline** from within the form without navigating away
+- Completed transactions are saved to the `transactions` Room DB table via `TransactionDao`
+
+#### Photo Capture
+- Users can attach a photo by **taking a new photo with the camera** or **choosing from the gallery**
+- Camera permission (`CAMERA`) is requested at runtime using `ActivityResultContracts.RequestPermission`
+- Camera photos are saved to `MediaStore` then copied to **internal app storage** so they persist independently of the gallery
+- A photo preview is shown immediately after capture; users can remove the photo before saving
+- The saved file path is stored in the transaction record
+
+**Relevant files:**
+- `TransactionsActivity.kt` — expense/income form with validation, date/time pickers, inline category creation, and photo capture
+- `data/entity/Transaction.kt` — Room entity (id, amount, categoryId, categoryName, type, description, date, startTime, endTime, photoPath, userId)
+- `data/dao/TransactionDao.kt` — insert, delete, getByDateRange, getTotalByType, getCategoryTotals
+- `data/Converters.kt` — Room type converters for `Date` fields
+- `AndroidManifest.xml` — added `CAMERA` permission
 
 ---
 
-### 🔲 Person 3 — *(Feature name here)*
+### ✅ [Name] — History, Reports & Budget Goals
 
-> **Instructions for Person 3:** Replace this section with your feature documentation.
-> - Short description of what the feature does
-> - Any important implementation details
-> - List of relevant files you created or modified
+#### Transaction History
+- Displays all transactions **grouped by date** with "Today" / "Yesterday" relative labels
+- Filter by **Day, Week, or Month** using chip buttons; date range is shown above the list
+- **Live search** filters transactions by category name, description, or amount as the user types
+- Tap a transaction to see full details; if a photo is attached it can be viewed in a dialog
+- Transactions can be **deleted** with a confirmation prompt; the associated photo file is also removed from storage
+
+**Relevant files:**
+- `HistoryActivity.kt` — filterable, searchable history list with detail view and delete
+- `utils/DateRangeHelper.kt` — calculates start/end date boundaries for Day/Week/Month ranges
+
+#### Reports
+- Shows **total income and total expenses** for the selected period (Day/Week/Month spinner)
+- Breaks down expenses **per category** with the actual amount spent
+- Each category card compares spending against its budget goals — a **progress bar** tracks max budget usage
+- Status indicators warn when spending hits 80% or exceeds 100% of the max budget, or falls below the min budget
+- "Set Budget Goals" button navigates directly to `BudgetGoalsActivity`
+- Modified `DashboardActivity` to display **live budget indicators** showing totals vs goals
+
+**Relevant files:**
+- `ReportsActivity.kt` — summary + category breakdown with budget progress bars
+- `DashboardActivity.kt` — updated to show real transaction totals and budget status indicators
+
+#### Monthly Budget Goals
+- Users set a **minimum and/or maximum budget per category per month**
+- Navigate between months using prev/next arrow buttons
+- Each category shown as a card; tapping opens a dialog to **add, edit, or delete** that month's budget
+- Min and max are independently optional — either or both can be set per category
+- Budget data stored in the `budget_goals` Room DB table
+
+**Relevant files:**
+- `BudgetGoalsActivity.kt` — monthly budget management UI with per-category cards
+- `data/entity/BudgetGoal.kt` — Room entity (id, categoryId, categoryName, minBudget, maxBudget, userId, month, year)
+- `data/dao/BudgetGoalDao.kt` — insert, delete, getGoalsForMonth, getGoalForCategory
 
 ---
 
