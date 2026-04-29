@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.budgie_budgetapp.data.AppDatabase
 import com.example.budgie_budgetapp.data.entity.Transaction
-import com.example.budgie_budgetapp.utils.DataSeeder
 import com.example.budgie_budgetapp.utils.DateRangeHelper
 import com.example.budgie_budgetapp.utils.KEY_USER_ID
 import com.example.budgie_budgetapp.utils.KEY_USERNAME
@@ -41,16 +40,6 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard)
 
         Log.d(TAG, "DashboardActivity created")
-
-        // Seed demo data for guest user on first launch
-        lifecycleScope.launch(Dispatchers.IO) {
-            DataSeeder.seedIfNeeded(this@DashboardActivity)
-            withContext(Dispatchers.Main) {
-                loadFinancialSummary()
-                loadRecentTransactions()
-                loadCategoriesFromDatabase()
-            }
-        }
 
         initializeViews()
         loadUserGreeting()
