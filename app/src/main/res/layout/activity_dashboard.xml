@@ -16,7 +16,6 @@
         android:background="@color/medium_gray"
         android:padding="16dp">
 
-        <!-- Profile Image in Top Left as Text/Initials -->
         <LinearLayout
             android:id="@+id/profileImage"
             android:layout_width="48dp"
@@ -37,7 +36,6 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- App Title and Greeting -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,7 +62,16 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Settings/Hamburger Menu Button -->
+        <ImageButton
+            android:id="@+id/refreshButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_toStartOf="@id/menuButton"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_refresh_24"
+            app:tint="@color/yellow_accent" />
+
         <ImageButton
             android:id="@+id/menuButton"
             android:layout_width="48dp"
@@ -76,7 +83,7 @@
             app:tint="@color/yellow_accent" />
     </RelativeLayout>
 
-    <!-- Dropdown Menu (Initially Hidden) -->
+    <!-- Dropdown Menu -->
     <LinearLayout
         android:id="@+id/dropdownMenu"
         android:layout_width="match_parent"
@@ -85,62 +92,6 @@
         android:orientation="vertical"
         android:padding="16dp"
         android:visibility="gone">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:text="Settings"
-            android:textColor="@color/yellow_accent"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="8dp"
-            android:text="Currency: ZAR"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/text_secondary" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="8dp"
-            android:text="Country: South Africa"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/text_secondary" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="8dp"
-            android:text="Language: English"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/text_secondary" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="8dp"
-            android:text="Personal Information"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp" />
     </LinearLayout>
 
     <!-- Balance Card -->
@@ -160,14 +111,14 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tvTotalBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R 5,229"
+            android:text="R 0.00"
             android:textColor="@color/yellow_accent"
             android:textSize="32sp"
             android:textStyle="bold" />
 
-        <!-- Income/Expense Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -191,8 +142,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Income: R8,000"
+                    android:text="Income:"
                     android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/tvTotalIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="R0.00"
+                    android:textColor="@color/income_green"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -212,53 +172,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Expenses: R2,771"
+                    android:text="Expenses:"
                     android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/tvTotalExpenses"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="R0.00"
+                    android:textColor="@color/expense_red"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-
-    <!-- Filter Chips -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingHorizontal="16dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/chip_selected"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp"
-            android:text="Day"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/chip_unselected"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp"
-            android:text="Week"
-            android:textColor="@color/text_primary" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/chip_unselected"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp"
-            android:text="Month"
-            android:textColor="@color/text_primary" />
     </LinearLayout>
 
     <!-- Categories Section -->
@@ -316,98 +242,20 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <!-- Transaction List -->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp">
+        android:layout_weight="1">
 
         <LinearLayout
+            android:id="@+id/recentTransactionsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingVertical="12dp">
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp" />
+    </ScrollView>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Groceries"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-R200"
-                android:textColor="@color/expense_red"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/light_gray" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingVertical="12dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Salary"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+R8,000"
-                android:textColor="@color/income_green"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/light_gray" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingVertical="12dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Transport"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-R100"
-                android:textColor="@color/expense_red"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Plus Button Above Navigation -->
+    <!-- Plus Button -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -419,10 +267,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:backgroundTint="@color/yellow_accent"
-            android:textColor="@color/black"
-            android:contentDescription="Add Expense"
             android:src="@android:drawable/ic_input_add"
             app:fabSize="normal"
+            app:tint="@color/black"
             app:elevation="11dp" />
     </FrameLayout>
 

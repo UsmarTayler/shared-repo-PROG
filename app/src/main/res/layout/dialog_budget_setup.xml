@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <CheckBox
+        android:id="@+id/cbSetMin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Minimum Budget"
+        android:textColor="@color/text_primary" />
+
+    <EditText
+        android:id="@+id/etMinBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:hint="Minimum amount (R)"
+        android:inputType="numberDecimal"
+        android:enabled="false"
+        android:background="@drawable/input_background"
+        android:padding="12dp" />
+
+    <CheckBox
+        android:id="@+id/cbSetMax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Set Maximum Budget"
+        android:textColor="@color/text_primary" />
+
+    <EditText
+        android:id="@+id/etMaxBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:hint="Maximum amount (R)"
+        android:inputType="numberDecimal"
+        android:enabled="false"
+        android:background="@drawable/input_background"
+        android:padding="12dp" />
+
+</LinearLayout>

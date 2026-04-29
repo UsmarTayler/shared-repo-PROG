@@ -130,6 +130,28 @@
                     android:paddingHorizontal="16dp"
                     android:layout_marginBottom="16dp"/>
 
+                <!-- Description Field -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <EditText
+                    android:id="@+id/noteInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter description..."
+                    android:minLines="2"
+                    android:gravity="top"
+                    android:background="@drawable/input_background"
+                    android:padding="16dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
+                    android:layout_marginBottom="16dp"/>
+
                 <!-- Date Field -->
                 <TextView
                     android:layout_width="wrap_content"
@@ -151,27 +173,75 @@
                     android:gravity="center_vertical"
                     android:layout_marginBottom="16dp"/>
 
-                <!-- Notes Field -->
+                <!-- Start Time Field -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notes (Optional)"
+                    android:text="Start Time (Optional)"
                     android:textColor="@color/text_secondary"
                     android:textSize="14sp"
                     android:layout_marginBottom="8dp"/>
 
-                <EditText
-                    android:id="@+id/noteInput"
+                <TextView
+                    android:id="@+id/startTimeText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Add a note..."
-                    android:minLines="3"
-                    android:gravity="top"
+                    android:hint="Tap to set start time"
                     android:background="@drawable/input_background"
                     android:padding="16dp"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_secondary"
+                    android:gravity="center_vertical"
                     android:layout_marginBottom="16dp"/>
+
+                <!-- End Time Field -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="End Time (Optional)"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/endTimeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tap to set end time"
+                    android:background="@drawable/input_background"
+                    android:padding="16dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Photo Field -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Photo (Optional)"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <Button
+                    android:id="@+id/photoButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Add Photo"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/light_gray"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="16dp"/>
+
+                <ImageView
+                    android:id="@+id/photoPreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:visibility="gone"
+                    android:scaleType="centerCrop"
+                    android:background="@color/light_gray"
+                    android:layout_marginBottom="32dp"/>
 
             </LinearLayout>
         </ScrollView>
